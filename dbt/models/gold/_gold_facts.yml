@@ -1,0 +1,131 @@
+version: 2
+
+models:
+  - name: fact_match
+    columns:
+      - name: match_id
+        data_tests: [unique, not_null]
+      - name: queue_id
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_queue')
+                field: queue_id
+      - name: date_key
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_date')
+                field: date_key
+      - name: patch
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_patch')
+                field: patch
+
+  - name: fact_match_participant
+    columns:
+      - name: participant_key
+        data_tests: [unique, not_null]
+      - name: match_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('fact_match')
+                field: match_id
+      - name: puuid
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_player')
+                field: puuid
+      - name: champion_id
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_champion')
+                field: champion_id
+      - name: queue_id
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_queue')
+                field: queue_id
+      - name: date_key
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_date')
+                field: date_key
+      - name: patch
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_patch')
+                field: patch
+      - name: keystone_rune_id
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_rune')
+                field: rune_id
+              config:
+                severity: warn
+      - name: item_0
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_item')
+                field: item_id
+              config:
+                severity: warn
+      - name: item_1
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_item')
+                field: item_id
+              config:
+                severity: warn
+      - name: item_2
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_item')
+                field: item_id
+              config:
+                severity: warn
+      - name: item_3
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_item')
+                field: item_id
+              config:
+                severity: warn
+      - name: item_4
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_item')
+                field: item_id
+              config:
+                severity: warn
+      - name: item_5
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_item')
+                field: item_id
+              config:
+                severity: warn
+      - name: item_6
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_item')
+                field: item_id
+              config:
+                severity: warn
