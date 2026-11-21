@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: bronze
+    schema: bronze
+    tables:
+      - name: matches_raw
+        columns:
+          - name: match_id
+            tests: [unique, not_null]
+      - name: ddragon_raw
