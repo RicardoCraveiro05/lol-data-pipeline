@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: stg_match
+    columns:
+      - name: match_id
+        tests: [unique, not_null]
+      - name: queue_id
+        tests: [not_null]
+
+  - name: stg_participant
+    columns:
+      - name: participant_key
+        tests: [unique, not_null]
+      - name: puuid
+        tests: [not_null]
+      - name: champion_id
+        tests: [not_null]

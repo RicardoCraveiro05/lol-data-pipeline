@@ -1,0 +1,30 @@
+select
+    m.match_id || '-' || (p.participant->>'puuid')                as participant_key,
+    m.match_id,
+    p.participant->>'puuid'                                       as puuid,
+    p.participant->>'riotIdGameName'                              as riot_id_name,
+    p.participant->>'riotIdTagline'                               as riot_id_tag,
+    (p.participant->>'championId')::int                           as champion_id,
+    (p.participant->>'teamId')::int                               as team_id,
+    p.participant->>'teamPosition'                                as team_position,
+    (p.participant->>'win')::boolean                              as win,
+    (p.participant->>'kills')::int                                as kills,
+    (p.participant->>'deaths')::int                               as deaths,
+    (p.participant->>'assists')::int                              as assists,
+    (p.participant->>'totalMinionsKilled')::int
+        + coalesce((p.participant->>'neutralMinionsKilled')::int, 0) as cs_total,
+    (p.participant->>'goldEarned')::int                           as gold_earned,
+    (p.participant->>'totalDamageDealtToChampions')::int          as damage_to_champions,
+    (p.participant->>'visionScore')::int                          as vision_score,
+    (p.participant->>'item0')::int                                as item_0,
+    (p.participant->>'item1')::int                                as item_1,
+    (p.participant->>'item2')::int                                as item_2,
+    (p.participant->>'item3')::int                                as item_3,
+    (p.participant->>'item4')::int                                as item_4,
+    (p.participant->>'item5')::int                                as item_5,
+    (p.participant->>'item6')::int                                as item_6,
+    (p.participant #>> '{perks,styles,0,selections,0,perk}')::int as keystone_rune_id,
+    (p.participant #>> '{perks,styles,0,style}')::int             as primary_style_id,
+    (p.participant #>> '{perks,styles,1,style}')::int             as sub_style_id
+from {{ source('bronze', 'matches_raw') }} as m
+cross join lateral jsonb_array_elements(m.payload->'info'->'participants') as p(participant)
