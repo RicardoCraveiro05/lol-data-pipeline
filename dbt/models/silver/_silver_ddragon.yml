@@ -1,0 +1,15 @@
+version: 2
+
+models:
+  - name: stg_champion
+    columns:
+      - name: champion_id
+        tests: [unique, not_null]
+  - name: stg_item
+    columns:
+      - name: item_id
+        tests: [unique, not_null]
+  - name: stg_rune
+    columns:
+      - name: rune_id
+        tests: [unique, not_null]

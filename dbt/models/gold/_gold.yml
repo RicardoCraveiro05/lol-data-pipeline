@@ -1,0 +1,31 @@
+version: 2
+
+models:
+  - name: dim_queue
+    columns:
+      - name: queue_id
+        tests: [unique, not_null]
+  - name: dim_date
+    columns:
+      - name: date_key
+        tests: [unique, not_null]
+  - name: dim_patch
+    columns:
+      - name: patch
+        tests: [unique, not_null]
+  - name: dim_player
+    columns:
+      - name: puuid
+        tests: [unique, not_null]
+  - name: dim_champion
+    columns:
+      - name: champion_id
+        tests: [unique, not_null]
+  - name: dim_item
+    columns:
+      - name: item_id
+        tests: [unique, not_null]
+  - name: dim_rune
+    columns:
+      - name: rune_id
+        tests: [unique, not_null]

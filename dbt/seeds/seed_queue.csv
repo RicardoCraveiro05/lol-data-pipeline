@@ -1,0 +1,15 @@
+queue_id,queue_name,queue_group
+400,Normal Draft Pick,Normal
+420,Ranked Solo/Duo,Ranked
+430,Normal Blind Pick,Normal
+440,Ranked Flex,Ranked
+450,ARAM,ARAM
+480,Swiftplay,Normal
+490,Normal Quickplay,Normal
+700,Clash,Clash
+830,Co-op vs AI Intro,Co-op vs AI
+840,Co-op vs AI Beginner,Co-op vs AI
+850,Co-op vs AI Intermediate,Co-op vs AI
+1700,Arena,Arena
+1710,Arena,Arena
+1900,URF,Event
